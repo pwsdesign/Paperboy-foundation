@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Typekit Test</title>
+
+    <!-- Adobe Fonts (Typekit) -->
+    <link rel="stylesheet" href="https://use.typekit.net/ctv7grz.css" />
+
+    <style>
+      body {
+        margin: 40px;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, "logic-monospace", mono, serif, sans-serif;
+        line-height: 1.3;
+      }
+
+      /* Try both names in case Adobe exposes one vs the other */
+      .burghi-a {
+        font-family: "burghi-variable", "burghi", sans-serif;
+        font-size: 64px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+
+      .burghi-b {
+        font-family: "burghi", "burghi-variable", sans-serif;
+        font-size: 64px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+
+      .meta {
+        margin-top: 18px;
+        opacity: 0.7;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="burghi-a">Burghi Test Headline</div>
+    <div class="burghi-b">Burghi Test Headline</div>
+
+    <p class="meta">
+      If both lines look the same as the system font, the kit isn’t loading or the font name
+      doesn’t match what your kit provides.
+    </p>
+
+    <script>
+      // Quick check: see what fonts are actually available
+      console.log("fonts:", document.fonts);
+    </script>
+  </body>
+</html>
