@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { getDictionary } from "@/lib/i18n";
+import type { Lang } from "@/lib/i18n";
 
 const WAYS = [
   {
@@ -22,18 +24,25 @@ const WAYS = [
   {
     title: "Partner with us",
     tag: "Collabs",
-    copy: "If your mission aligns: community, culture, and slow media—let’s build.",
+    copy: "If your mission aligns: community, culture, and slow media, let’s build.",
     cta: { href: "/contact", label: "Start a partnership" },
   },
 ];
 
-export default function GetInvolvedPage() {
+export default async function GetInvolvedPage({
+  params,
+}: {
+  params: { lang: Lang };
+}) {
+  const lang = params.lang;
+  const dict = await getDictionary(lang);
+
   return (
     <main className="wrap py-16 md:py-24">
       <section className="rulebox p-7 md:p-12 grain relative">
         <div className="xerox-grain" aria-hidden="true" />
         <div className="max-w-3xl">
-          <p className="kicker">Get involved</p>
+          <p className="kicker">{dict.nav.involved}</p>
 
           <h1 className="ziclets-statement mt-4 text-4xl md:text-6xl">
             Build something offline, with people who care.
@@ -45,10 +54,10 @@ export default function GetInvolvedPage() {
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Link className="btn-ink" href="/contact">
+            <Link className="btn-ink" href={`/${lang}/contact`}>
               Say hello
             </Link>
-            <Link className="btn-outline" href="/support">
+            <Link className="btn-outline" href={`/${lang}/support`}>
               Support the print run
             </Link>
           </div>
@@ -65,7 +74,7 @@ export default function GetInvolvedPage() {
             </div>
             <p className="lede mt-4 text-[15px]">{w.copy}</p>
             <div className="mt-6">
-              <Link className="btn-outline" href={w.cta.href}>
+              <Link className="btn-outline" href={`/${lang}${w.cta.href}`}>
                 {w.cta.label}
               </Link>
             </div>

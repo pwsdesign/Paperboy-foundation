@@ -1,33 +1,24 @@
-import type { Metadata } from "next";
-import "../globals.css";
 import { SiteChrome } from "../components/SiteChrome";
-import { getDictionary, type Lang } from "@/lib/i18n";
+import { getDictionary } from "@/lib/i18n";
+import type { Lang } from "@/lib/i18n";
 
-export const metadata: Metadata = {
-  metadataBase: new URL("https://iampaperboy.com"),
-  title: { default: "Paperboy Foundation", template: "%s • Paperboy Foundation" },
-  description:
-    "Paperboy Foundation is a nonprofit print project fighting digital burnout and rebuilding local connection through slow, collectible media people keep.",
-};
-
-type LayoutProps = {
+type Props = {
   children: React.ReactNode;
-  params: { lang: Lang } | Promise<{ lang: Lang }>;
+  params: { lang: string };
 };
 
-export default async function LangLayout({ children, params }: LayoutProps) {
-  const { lang } = await Promise.resolve(params);
+function normalizeLang(v: string): Lang {
+  return v === "es" ? "es" : "en";
+}
+
+export default async function LangLayout({ children, params }: Props) {
+  const lang = normalizeLang(params.lang);
   const dict = await getDictionary(lang);
 
   return (
-    <html lang={lang}>
-      <head>
-        <link rel="stylesheet" href="https://use.typekit.net/ctv7grz.css" />
-      </head>
-      <body>
-        <SiteChrome dict={dict} lang={lang} />
-        {children}
-      </body>
-    </html>
+    <>
+      <SiteChrome dict={dict} lang={lang} />
+      {children}
+    </>
   );
 }

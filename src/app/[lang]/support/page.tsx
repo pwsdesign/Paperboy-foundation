@@ -1,29 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef } from "react";
 
 const TIERS = [
-  {
-    title: "Keep it printing",
-    amount: "$10",
-    note: "Paper, ink, staples. The unglamorous stuff that makes it real.",
-  },
-  {
-    title: "Sponsor a bundle",
-    amount: "$25",
-    note: "Helps place copies at local pickup spots around the city.",
-  },
-  {
-    title: "Fund a feature",
-    amount: "$50",
-    note: "Supports an artist, a maker, and the time it takes to tell it right.",
-  },
-  {
-    title: "Back a print run",
-    amount: "$100",
-    note: "A real boost that keeps Paperboy independent and ad free.",
-  },
+  { title: "Keep it printing", amount: "$10", note: "Paper, ink, staples. The unglamorous stuff that makes it real." },
+  { title: "Sponsor a bundle", amount: "$25", note: "Helps place copies at local pickup spots around the city." },
+  { title: "Fund a feature", amount: "$50", note: "Supports an artist, a maker, and the time it takes to tell it right." },
+  { title: "Back a print run", amount: "$100", note: "A real boost that keeps Paperboy independent and ad free." },
 ];
 
 export default function SupportPage({
@@ -33,17 +16,8 @@ export default function SupportPage({
 }) {
   const lang = params.lang;
 
-  // Fix: set allowpaymentrequest as a raw attribute (avoids React/TS warnings)
-  const donorboxRef = useRef<HTMLIFrameElement | null>(null);
-  useEffect(() => {
-    if (donorboxRef.current) {
-      donorboxRef.current.setAttribute("allowpaymentrequest", "true");
-    }
-  }, []);
-
   return (
     <main className="wrap py-16 md:py-24">
-      {/* Header */}
       <section className="rulebox p-7 md:p-12 relative overflow-hidden">
         <div className="xerox-grain" aria-hidden="true" />
 
@@ -82,9 +56,7 @@ export default function SupportPage({
         </div>
       </section>
 
-      {/* Main grid */}
       <section className="mt-10 grid gap-6 md:grid-cols-[1.1fr_.9fr] md:items-start">
-        {/* Left */}
         <div className="zine-card p-7 md:p-10">
           <div className="flex items-center justify-between">
             <p className="kicker">Ways to support</p>
@@ -138,7 +110,6 @@ export default function SupportPage({
           </div>
         </div>
 
-        {/* Right */}
         <aside className="zine-card p-7 md:p-8">
           <div className="flex items-center justify-between">
             <p className="kicker">Donate</p>
@@ -151,9 +122,8 @@ export default function SupportPage({
 
           <div className="mt-6 rulebox p-3 md:p-4">
             <iframe
-              ref={donorboxRef}
               title="Donate"
-              src="https://donorbox.org/embed/support-paperboy?default_interval=o"
+              src="https://donorbox.org/embed/support-paperboy?default_interval=o&allowpaymentrequest=true"
               name="donorbox"
               allow="payment"
               frameBorder={0}
@@ -181,7 +151,6 @@ export default function SupportPage({
         </aside>
       </section>
 
-      {/* Bottom CTA */}
       <section className="mt-12 rulebox p-7 md:p-10">
         <div className="grid gap-6 md:grid-cols-[1.2fr_.8fr] md:items-center">
           <div>

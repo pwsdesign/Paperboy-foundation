@@ -1,12 +1,11 @@
-import Link from "next/link";
-import { getDictionary } from "@/lib/i18n";
+import type { Lang } from "@/lib/i18n";
 
-export default async function HomePage({
+export default function ContactPage({
   params,
 }: {
-  params: { lang: string };
+  params: { lang: Lang };
 }) {
-  const dict = await getDictionary(params.lang);
+  const isEs = params.lang === "es";
 
   return (
     <main className="wrap py-16 md:py-24">
@@ -14,28 +13,33 @@ export default async function HomePage({
         <div className="xerox-grain" aria-hidden="true" />
 
         <div className="relative max-w-3xl">
-          <p className="kicker">{dict.home.kicker}</p>
+          <p className="kicker">{isEs ? "Contacto" : "Contact"}</p>
 
-          <h1 className="basset-cta mt-4 text-5xl md:text-7xl">
-            {dict.home.title}
-            <span className="block mt-3 text-[13px] md:text-[15px] tracking-[0.22em] uppercase opacity-80">
-              {dict.home.subtitle}
-            </span>
+          <h1 className="say-hello mt-4 text-4xl md:text-5xl">
+            {isEs ? "Di hola" : "Say hello"}
           </h1>
 
           <p className="lede mt-6 text-[15px] md:text-[17px] leading-relaxed">
-            {dict.home.description}
+            {isEs
+              ? "Para alianzas, prensa, distribución, becas o colaboración."
+              : "For partnerships, press, distribution, grants, or collaboration."}
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Link href={`/${params.lang}/support`} className="btn-ink">
-              {dict.home.ctaPrimary}
-            </Link>
+          <form className="mt-10 grid gap-4">
+            <input className="rulebox px-4 py-3" placeholder={isEs ? "Nombre" : "Name"} />
+            <input className="rulebox px-4 py-3" placeholder={isEs ? "Email" : "Email"} />
+            <textarea className="rulebox px-4 py-3 min-h-[140px]" placeholder={isEs ? "Mensaje" : "Message"} />
 
-            <Link href={`/${params.lang}/get-involved`} className="btn-outline">
-              {dict.home.ctaSecondary}
-            </Link>
-          </div>
+            <button type="button" className="btn-ink w-fit">
+              {isEs ? "Enviar" : "Send"}
+            </button>
+
+            <p className="text-[12px] text-[rgba(14,15,18,0.55)]">
+              {isEs
+                ? "Siguiente paso: lo conectamos a un formulario (Tally/Formspree)."
+                : "Next step: we’ll connect this to a form service (Tally/Formspree)."}
+            </p>
+          </form>
         </div>
       </section>
     </main>
