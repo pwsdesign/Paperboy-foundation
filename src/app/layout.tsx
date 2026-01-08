@@ -42,17 +42,7 @@ export default function RootLayout({
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/ctv7grz.css" />
       </head>
-
-      <body>
-        {/* Donorbox script: keep it in body */}
-        <Script
-          src="https://donorbox.org/widget.js"
-          strategy="afterInteractive"
-          data-paypalExpress="false"
-        />
-
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
