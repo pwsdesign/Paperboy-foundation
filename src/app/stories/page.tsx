@@ -14,9 +14,9 @@ export default function StoriesPage() {
       <section className="rulebox p-7 md:p-12">
         <p className="kicker">From the pages of Paperboy</p>
 
-        <h1 className="hero-statement mt-4 text-5xl md:text-7xl">
-          Stories, unfolded.
-        </h1>
+        <h1 className="headline text-5xl md:text-7xl">
+  <span className="glammo-word">Stories</span>, unfolded.
+</h1>
 
         <p className="lede mt-5 max-w-2xl text-[15px] md:text-[17px] leading-relaxed">
           Every story featured in the print fanzine lives here in a longer form.

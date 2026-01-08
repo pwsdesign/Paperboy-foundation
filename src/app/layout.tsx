@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { SiteChrome } from "./components/SiteChrome";
+import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://iampaperboy.com"),
@@ -13,6 +15,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://iampaperboy.com",
   },
+
+  // ✅ favicon + tab icon + apple icon
+  icons: {
+    icon: "/icon.png",          // or "/favicon.ico"
+    shortcut: "/favicon.ico",
+    apple: "/apple-icon.png",
+  },
+
   openGraph: {
     title: "Paperboy Foundation",
     description:
@@ -35,10 +45,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-      <link rel="stylesheet" href="https://use.typekit.net/ctv7grz.css"/>
+        <link rel="stylesheet" href="https://use.typekit.net/ctv7grz.css" />
+
+        <Script
+          src="https://donorbox.org/widget.js"
+          strategy="afterInteractive"
+          data-paypal-express="false"
+        />
       </head>
       <body>
-        <SiteChrome>{children}</SiteChrome>
+        {children}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

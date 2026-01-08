@@ -9,7 +9,13 @@ const TIERS = [
   { title: "Back a print run", amount: "$100", note: "A real boost that keeps Paperboy independent and ad free." },
 ];
 
-export default function SupportPage() {
+export default function SupportPage({
+  params,
+}: {
+  params: { lang: "en" | "es" };
+}) {
+  const lang = params.lang;
+
   return (
     <main className="wrap py-16 md:py-24">
       {/* Header */}
@@ -35,15 +41,15 @@ export default function SupportPage() {
               rel="noreferrer"
             >
               support
-            </Link>{" "}
+            </Link>{`/${lang}/support`}
             funds printing, distribution, and fair creative collaboration, while keeping Paperboy out of the content machine.
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Link href="/issue-01" className="btn-outline">
+            <Link href={`/${lang}/issue-01`} className="btn-outline">
               Explore Issue 01
             </Link>
-            <Link href="/get-involved" className="btn-outline">
+            <Link href={`/${lang}/get-involved`} className="btn-outline">
               Get involved
             </Link>
           </div>
@@ -98,7 +104,7 @@ export default function SupportPage() {
 
             <p className="mt-5 text-[12px] text-[rgba(14,15,18,0.55)]">
   Want to support in kind with printing help, pickup locations, or sponsored bundles?{" "}
-  <Link className="underline" href="/contact">
+  <Link className="underline" href={`/${lang}/contact`}>
     Contact us
   </Link>
   .
@@ -161,10 +167,10 @@ export default function SupportPage() {
           </div>
 
           <div className="flex flex-col gap-3">
-            <Link href="/get-involved" className="btn-ink w-full">
+            <Link href={`/${lang}/get-involved`} className="btn-ink w-full">
               Get involved
             </Link>
-            <Link href="/contact" className="btn-outline w-full">
+            <Link href={`/${lang}/contact`} className="btn-outline w-full">
               Contact
             </Link>
           </div>

@@ -43,7 +43,7 @@ export default function MissionPage() {
       <section className="rulebox p-7 md:p-12">
         <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <div className="max-w-3xl">
-            <p className="kicker">Mission</p>
+            <p className="kicker wilko-label">Mission</p>
 
             <div className="mt-3 flex flex-wrap items-center gap-3 text-[11px]">
               <span className="stamp">Nonprofit</span>
@@ -88,7 +88,7 @@ export default function MissionPage() {
           {/* Right: Micro-manifesto cards */}
           <aside className="zine-card p-6 md:p-7 md:w-[420px]">
             <div className="flex items-center justify-between">
-              <p className="kicker">Manifesto</p>
+              <p className="kicker wilko-label">Manifesto</p>
               <span className="stamp">PB</span>
             </div>
 
@@ -112,7 +112,7 @@ export default function MissionPage() {
       <section className="mt-10 grid gap-6 md:grid-cols-3">
         {PRINCIPLES.map((p) => (
           <div key={p.title} className="zine-card p-6 md:p-7">
-            <p className="kicker">Principle</p>
+            <p className="kicker wilko-label">Principle</p>
             <h2 className="section-strong mt-3 text-2xl">{p.title}</h2>
             <p className="lede mt-4 text-[15px] leading-relaxed">{p.desc}</p>
           </div>
@@ -122,7 +122,7 @@ export default function MissionPage() {
       {/* WHAT WE DO / WHAT WE DON'T */}
       <section className="mt-12 grid gap-6 md:grid-cols-2">
         <div className="rulebox p-7 md:p-10">
-          <p className="kicker">What we do</p>
+          <p className="kicker wilko-label">What we do</p>
           <h2 className="headline mt-3 text-3xl">Publish as an act of care.</h2>
 
           <ul className="mt-6 grid gap-3 text-[15px] leading-relaxed">
@@ -150,7 +150,7 @@ export default function MissionPage() {
         </div>
 
         <div className="rulebox p-7 md:p-10">
-          <p className="kicker">What we don’t do</p>
+          <p className="kicker wilko-label">What we don’t do</p>
           <h2 className="headline mt-3 text-3xl">We refuse the usual trade.</h2>
 
           <ul className="mt-6 grid gap-3 text-[15px] leading-relaxed">
@@ -176,7 +176,7 @@ export default function MissionPage() {
       <section className="mt-12 zine-card p-7 md:p-10">
         <div className="grid gap-6 md:grid-cols-[1.2fr_.8fr] md:items-center">
           <div>
-            <p className="kicker">Join the foundation</p>
+            <p className="kicker wilko-label">Join the foundation</p>
             <h2 className="headline mt-3 text-3xl">
               Help fund print that doesn’t beg for attention.
             </h2>
