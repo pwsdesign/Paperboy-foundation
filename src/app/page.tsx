@@ -6,9 +6,7 @@ export default function LanguageGate() {
       <section className="rulebox p-7 md:p-12">
         <p className="kicker">Paperboy Foundation</p>
 
-        <h1 className="headline mt-6 text-4xl md:text-6xl">
-          Choose your language
-        </h1>
+        <h1 className="text-5xl md:text-7xl mt-6">Choose your language</h1>
 
         <div className="mt-8 grid gap-3 max-w-sm">
           <Link href="/en" className="btn-ink w-full justify-center">

@@ -1,20 +1,23 @@
-import "../globals.css";
+import type { ReactNode } from "react";
 import { SiteChrome } from "../components/SiteChrome";
 import { getDictionary } from "@/lib/i18n";
-import type { Lang } from "@/lib/i18n";
 
-function normalizeLang(value: string): Lang {
-  return value === "es" ? "es" : "en";
+type Lang = "en" | "es";
+
+function normalizeLang(v: unknown): Lang {
+  return v === "es" ? "es" : "en";
 }
 
 export default async function LangLayout({
   children,
   params,
 }: {
-  children: React.ReactNode;
-  params: { lang: string };
+  children: ReactNode;
+  params: { lang: string } | Promise<{ lang: string }>;
 }) {
-  const lang = normalizeLang(params.lang);
+  const resolved = await Promise.resolve(params);
+  const lang = normalizeLang(resolved.lang);
+
   const dict = await getDictionary(lang);
 
   return (
