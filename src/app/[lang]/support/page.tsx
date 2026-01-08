@@ -1,12 +1,29 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useRef } from "react";
 
 const TIERS = [
-  { title: "Keep it printing", amount: "$10", note: "Paper, ink, staples. The unglamorous stuff that makes it real." },
-  { title: "Sponsor a bundle", amount: "$25", note: "Helps place copies at local pickup spots around the city." },
-  { title: "Fund a feature", amount: "$50", note: "Supports an artist, a maker, and the time it takes to tell it right." },
-  { title: "Back a print run", amount: "$100", note: "A real boost that keeps Paperboy independent and ad free." },
+  {
+    title: "Keep it printing",
+    amount: "$10",
+    note: "Paper, ink, staples. The unglamorous stuff that makes it real.",
+  },
+  {
+    title: "Sponsor a bundle",
+    amount: "$25",
+    note: "Helps place copies at local pickup spots around the city.",
+  },
+  {
+    title: "Fund a feature",
+    amount: "$50",
+    note: "Supports an artist, a maker, and the time it takes to tell it right.",
+  },
+  {
+    title: "Back a print run",
+    amount: "$100",
+    note: "A real boost that keeps Paperboy independent and ad free.",
+  },
 ];
 
 export default function SupportPage({
@@ -15,6 +32,14 @@ export default function SupportPage({
   params: { lang: "en" | "es" };
 }) {
   const lang = params.lang;
+
+  // Fix: set allowpaymentrequest as a raw attribute (avoids React/TS warnings)
+  const donorboxRef = useRef<HTMLIFrameElement | null>(null);
+  useEffect(() => {
+    if (donorboxRef.current) {
+      donorboxRef.current.setAttribute("allowpaymentrequest", "true");
+    }
+  }, []);
 
   return (
     <main className="wrap py-16 md:py-24">
@@ -41,8 +66,9 @@ export default function SupportPage({
               rel="noreferrer"
             >
               support
-            </Link>{`/${lang}/support`}
-            funds printing, distribution, and fair creative collaboration, while keeping Paperboy out of the content machine.
+            </Link>{" "}
+            funds printing, distribution, and fair creative collaboration, while keeping Paperboy out of the content
+            machine.
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -79,9 +105,9 @@ export default function SupportPage({
 
           <div className="mt-10 border-t pt-6" style={{ borderColor: "var(--rule)" }}>
             <p className="kicker">Where support goes</p>
-<p className="lede mt-3 text-[14px]">
-  We keep costs visible and decisions local. Here is what your support funds.
-</p>
+            <p className="lede mt-3 text-[14px]">
+              We keep costs visible and decisions local. Here is what your support funds.
+            </p>
 
             <div className="mt-4 grid gap-3 md:grid-cols-2">
               <div className="rulebox p-5">
@@ -103,12 +129,12 @@ export default function SupportPage({
             </div>
 
             <p className="mt-5 text-[12px] text-[rgba(14,15,18,0.55)]">
-  Want to support in kind with printing help, pickup locations, or sponsored bundles?{" "}
-  <Link className="underline" href={`/${lang}/contact`}>
-    Contact us
-  </Link>
-  .
-</p>
+              Want to support in kind with printing help, pickup locations, or sponsored bundles?{" "}
+              <Link className="underline" href={`/${lang}/contact`}>
+                Contact us
+              </Link>
+              .
+            </p>
           </div>
         </div>
 
@@ -125,11 +151,11 @@ export default function SupportPage({
 
           <div className="mt-6 rulebox p-3 md:p-4">
             <iframe
+              ref={donorboxRef}
               title="Donate"
               src="https://donorbox.org/embed/support-paperboy?default_interval=o"
               name="donorbox"
               allow="payment"
-              allowpaymentrequest="true"
               frameBorder={0}
               scrolling="no"
               height={900}

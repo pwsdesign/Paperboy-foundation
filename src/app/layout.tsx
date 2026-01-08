@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Script from "next/script";
-import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://iampaperboy.com"),
@@ -12,17 +10,12 @@ export const metadata: Metadata = {
   },
   description:
     "Paperboy Foundation is a nonprofit print project fighting digital burnout and rebuilding local connection through slow, collectible media people keep.",
-  alternates: {
-    canonical: "https://iampaperboy.com",
-  },
-
-  // ✅ favicon + tab icon + apple icon
+  alternates: { canonical: "https://iampaperboy.com" },
   icons: {
-    icon: "/icon.png",          // or "/favicon.ico"
+    icon: "/icon.png",
     shortcut: "/favicon.ico",
     apple: "/apple-icon.png",
   },
-
   openGraph: {
     title: "Paperboy Foundation",
     description:
@@ -41,22 +34,24 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/ctv7grz.css" />
+      </head>
 
+      <body>
+        {/* Donorbox script: keep it in body */}
         <Script
           src="https://donorbox.org/widget.js"
           strategy="afterInteractive"
-          data-paypal-express="false"
+          data-paypalExpress="false"
         />
-      </head>
-      <body>
+
         {children}
-        <Analytics />
-        <SpeedInsights />
       </body>
     </html>
   );

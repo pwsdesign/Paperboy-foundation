@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "../globals.css";
+import { getDictionary, type Lang } from "@/lib/i18n";
 import { SiteChrome } from "../components/SiteChrome";
 
 export const metadata: Metadata = {
@@ -9,20 +10,25 @@ export const metadata: Metadata = {
     "Paperboy Foundation is a nonprofit print project fighting digital burnout and rebuilding local connection through slow, collectible media people keep.",
 };
 
-export default function LangLayout({
-  children,
-  params,
-}: {
+type LayoutProps = {
   children: React.ReactNode;
-  params: { lang: "en" | "es" };
-}) {
+  params: { lang: string } | Promise<{ lang: string }>;
+};
+
+export default async function LangLayout({ children, params }: LayoutProps) {
+  const resolved = await Promise.resolve(params);
+  const lang = (resolved.lang === "es" ? "es" : "en") as Lang;
+
+  const dict = await getDictionary(lang);
+
   return (
-    <html lang={params.lang}>
+    <html lang={lang}>
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/ctv7grz.css" />
       </head>
       <body>
-        <SiteChrome lang={params.lang}>{children}</SiteChrome>
+        <SiteChrome dict={dict} lang={lang} />
+        {children}
       </body>
     </html>
   );
