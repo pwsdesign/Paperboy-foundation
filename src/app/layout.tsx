@@ -15,22 +15,7 @@ export const metadata: Metadata = {
     shortcut: "/favicon.ico",
     apple: "/apple-icon.png",
   },
-  openGraph: {
-    title: "Paperboy Foundation",
-    description:
-      "Slow, collectible media for a world that scrolls too fast. No ads. No algorithms. Built for keeping.",
-    url: "https://iampaperboy.com",
-    siteName: "Paperboy Foundation",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Paperboy Foundation",
-    description:
-      "Slow, collectible media for a world that scrolls too fast. No ads. No algorithms. Built for keeping.",
-  },
-};
-
+}
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">

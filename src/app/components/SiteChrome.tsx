@@ -1,38 +1,55 @@
 import Link from "next/link";
-import type { Dictionary, Lang } from "@/lib/i18n";
+import type { ChromeLabels, Lang } from "./SiteChromeLabels";
 
 type Props = {
-  dict: Dictionary;
   lang: Lang;
+  labels: ChromeLabels;
 };
 
-export function SiteChrome({ dict, lang }: Props) {
+export function SiteChrome({ lang, labels }: Props) {
+  const other: Lang = lang === "en" ? "es" : "en";
+
   return (
     <header className="masthead">
       <div className="wrap flex items-center justify-between py-4">
         <Link href={`/${lang}`} className="brand">
-          Paperboy Foundation
+          {labels.brand}
         </Link>
 
-        <nav className="hidden items-center gap-6 md:flex">
-          <Link className="navlink" href={`/${lang}/mission`}>{dict.nav.mission}</Link>
-          <Link className="navlink" href={`/${lang}/issue-01`}>{dict.nav.issue}</Link>
-          <Link className="navlink" href={`/${lang}/support`}>{dict.nav.support}</Link>
-          <Link className="navlink" href={`/${lang}/get-involved`}>{dict.nav.involved}</Link>
-          <Link className="navlink" href={`/${lang}/transparency`}>{dict.nav.transparency}</Link>
-          <Link className="navlink" href={`/${lang}/contact`}>{dict.nav.contact}</Link>
-          <Link className="navlink" href={`/${lang}/colophon`}>{dict.nav.colophon}</Link>
-          <Link className="navlink" href={`/${lang}/stories`}>{dict.nav.stories}</Link>
+        <nav className="nav-tabs flex gap-6 items-center">
+          <Link className="navlink" href={`/${lang}/mission`}>
+            {labels.nav.mission}
+          </Link>
+          <Link className="navlink" href={`/${lang}/issue-01`}>
+            {labels.nav.issue}
+          </Link>
+          <Link className="navlink" href={`/${lang}/support`}>
+            {labels.nav.support}
+          </Link>
+          <Link className="navlink" href={`/${lang}/get-involved`}>
+            {labels.nav.involved}
+          </Link>
+          <Link className="navlink" href={`/${lang}/transparency`}>
+            {labels.nav.transparency}
+          </Link>
+          <Link className="navlink" href={`/${lang}/contact`}>
+            {labels.nav.contact}
+          </Link>
+          <Link className="navlink" href={`/${lang}/colophon`}>
+            {labels.nav.colophon}
+          </Link>
+          <Link className="navlink" href={`/${lang}/stories`}>
+            {labels.nav.stories}
+          </Link>
         </nav>
 
         <div className="flex items-center gap-3">
-          {/* Simple language switch (goes to language home) */}
-          <Link className="btn-outline" href={`/${lang === "en" ? "es" : "en"}`}>
-            {lang === "en" ? "ES" : "EN"}
+          <Link className="btn-outline" href={`/${other}`}>
+            {other === "en" ? labels.switchTo.en : labels.switchTo.es}
           </Link>
 
           <Link href={`/${lang}/support`} className="btn-ink">
-            {dict.nav.support}
+            {labels.nav.support}
           </Link>
         </div>
       </div>
