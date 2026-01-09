@@ -386,6 +386,39 @@ font-variation-settings: "opsz" 20;
   transform: translateY(-2px) scale(1.05);
   letter-spacing: 0.12em;
 }
+
+/* Nav tab ink-bleed underline */
+.navlink {
+  position: relative;
+  display: inline-block;
+  transition: transform 140ms ease;
+}
+
+.navlink::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px; /* stays visually under text */
+  height: 1px;
+  background: var(--ink);
+  opacity: 0;
+  transform: scaleX(0.6);
+  transform-origin: center;
+  filter: blur(0.3px);
+  transition:
+    opacity 120ms ease,
+    transform 140ms ease;
+}
+
+.navlink:hover {
+  transform: translateY(-1px) scale(1.01);
+}
+
+.navlink:hover::after {
+  opacity: 0.65;
+  transform: scaleX(1);
+}
 }
 
 /* ===============================
