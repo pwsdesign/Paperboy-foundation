@@ -31,7 +31,7 @@ yarn-error.log*
 .pnpm-debug.log*
 
 # env files (can opt-in for committing if needed)
-.env*
+.env.local
 
 # vercel
 .vercel
@@ -40,4 +40,3 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-AI_GATEWAY_API_KEY=vck_5qi2LE05ciH29lDZ2hwz0Ax6HMZF22Yu8aH9y2GXNLjXh8Qx4D3e9QGE
