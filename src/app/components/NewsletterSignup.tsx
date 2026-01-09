@@ -29,13 +29,7 @@ export function NewsletterSignup({
 
   return (
     <section className="rulebox p-8 md:p-12">
-      {/* Tear strip (this was breaking your file before) */}
-      <div className="mt-14 mb-6 flex flex-wrap gap-2">
-        <span className="stamp">tear here</span>
-        <span className="stamp">copy me</span>
-        <span className="stamp">post me</span>
-      </div>
-
+      
       {/* Zine header strip */}
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex flex-wrap items-center gap-2">

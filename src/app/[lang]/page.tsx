@@ -8,7 +8,6 @@ export default async function HomePage({
   params: { lang: "en" | "es" };
 }) {
   const dict = await getDictionary(params.lang);
-  const lang = params.lang;
 
   return (
     <main className="wrap py-16 md:py-24">
@@ -30,21 +29,19 @@ export default async function HomePage({
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Link href={`/${lang}/support`} className="btn-ink">
+            <Link href={`/${params.lang}/support`} className="btn-ink">
               {dict.nav.support}
             </Link>
 
-            <Link href={`/${lang}/get-involved`} className="btn-outline">
+            <Link href={`/${params.lang}/get-involved`} className="btn-outline">
               {dict.nav.involved}
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Newsletter section */}
       <section className="mt-16 md:mt-24">
-        <div className="mb-10 border-t" style={{ borderColor: "var(--rule)" }} />
-        <NewsletterSignup lang={lang} />
+        <NewsletterSignup />
       </section>
     </main>
   );

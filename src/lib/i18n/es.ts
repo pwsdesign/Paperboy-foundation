@@ -1,4 +1,4 @@
-export const es = {
+const es = {
   nav: {
     mission: "Misión",
     issue: "Edición 01",
@@ -9,14 +9,15 @@ export const es = {
     colophon: "Colofón",
     stories: "Historias",
   },
-
   home: {
-    kicker: "Misión",
-    title: "Publicamos para que la gente vuelva a sentirse humana",
-    subtitle: "Medios lentos y coleccionables para un mundo que corre demasiado.",
+    kicker: "Paperboy Foundation",
+    title: "MEDIOS LENTOS. IMPACTO FUERTE",
+    subtitle: "Un proyecto impreso sin fines de lucro contra la fatiga digital.",
     description:
-      "Paperboy Foundation es un proyecto editorial sin fines de lucro creado para combatir el agotamiento digital y reconstruir conexión local a través de objetos físicos que la gente guarda. No es noticias. No es social. Impreso con vida útil.",
+      "Un proyecto impreso sin fines de lucro para combatir el agotamiento digital y reconstruir la conexión local con objetos físicos que la gente conserva.",
     ctaPrimary: "Apoyar la impresión",
     ctaSecondary: "Participa",
   },
 };
+
+export default es;

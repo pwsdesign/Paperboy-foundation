@@ -1,4 +1,4 @@
-export const en = {
+const en = {
   nav: {
     mission: "Mission",
     issue: "Issue 01",
@@ -9,14 +9,15 @@ export const en = {
     colophon: "Colophon",
     stories: "Stories",
   },
-
   home: {
-    kicker: "Mission",
-    title: "We publish to make people feel human again",
-    subtitle: "Slow, collectible media for a world that scrolls too fast.",
+    kicker: "Paperboy Foundation",
+    title: "SLOW MEDIA. LOUD IMPACT",
+    subtitle: "A nonprofit print project built to fight scroll fatigue.",
     description:
-      "Paperboy Foundation is a nonprofit print project built to fight digital burnout and rebuild local connection through physical objects people keep. Not news. Not social. Printed matter with shelf life.",
+      "A nonprofit print project fighting digital burnout and rebuilding local connection through physical objects people keep.",
     ctaPrimary: "Support the print run",
     ctaSecondary: "Get involved",
   },
 };
+
+export default en;
